@@ -33,7 +33,8 @@ class Modal {
         event.preventDefault();
         const eventTarget = event.currentTarget;
         const target = eventTarget.getAttribute('data-href');
-        if (target === null) {
+        const elTarget = (target !== null) ? document.querySelector(target) : '';
+        if (target === null || elTarget === null) {
             throw new Error(`La cible ${target} n'existe pas !`);
         }
         if (target.startsWith('#')) {

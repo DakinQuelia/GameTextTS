@@ -40,8 +40,9 @@ class Modal
 
         const eventTarget = event.currentTarget as HTMLElement;
         const target = eventTarget.getAttribute('data-href');
+        const elTarget = (target !== null) ? document.querySelector(target) : null;
 
-        if (target === null)
+        if (target === null || elTarget === null)
         {
             throw new Error(`La cible ${target} n'existe pas !`);
         }
