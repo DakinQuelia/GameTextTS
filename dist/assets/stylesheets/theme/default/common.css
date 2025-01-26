@@ -1,0 +1,876 @@
+/*****************************************
+*	Style - style.css
+*	Auteur 		: Dakin Quelia
+*	Version 	: 1.0.0. 
+*****************************************/
+/**
+*   Global
+**/
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.page-wrapper {
+    display: flex;
+}
+
+[data-title]:hover:before {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+
+[data-title]::before {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -2.5em;
+    left: 0;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #CCC;
+    background: #f9f9f9;
+    color: #495057;
+    font-size: 13px;
+    font-family: sans-serif;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+}
+
+[data-title] {
+    position: relative;
+}
+
+[data-title][data-placement="left"]:before {
+    left: 0 !important;
+    right: unset;
+}
+
+[data-title][data-placement="right"]:before {
+    right: 0 !important;
+    left: unset;
+}
+
+[data-title][data-placement="top"]:before {
+    top: 0 !important;
+    left: unset;
+    bottom: unset;
+}
+
+[data-title][data-placement="bottom"]:before {
+    bottom: 0 !important;
+    left: unset;
+}
+
+#toggle {
+    cursor: pointer; 
+    text-align: right;
+    margin-top: 1px;
+    margin-right: 2px;
+}
+
+/**
+*   Popovers
+**/
+.popover .popover-content {
+    opacity: 0;
+    transition: opacity 0.15s linear;
+}
+  
+.popover {
+    position: relative;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    font-size: inherit;
+    max-width: 100%;
+    z-index: initial;
+    font-family: Roboto, sans-serif;
+}
+
+.popover button {
+    font-family: inherit;
+    font-size: inherit;
+    background: none;
+    border: 0 none;
+    display: inline;
+    outline: none;
+    color: inherit;
+    padding: unset;
+    cursor: pointer;
+}
+
+.popover i:hover {
+    color: var(--color-link-hover);
+}
+
+.popover .popover-content {
+    position: absolute;
+    z-index: 1000;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    min-width: 10.68rem;
+    max-width: 24rem;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.5;
+    text-align: left;
+    font-size: 0.875rem;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #CCCCCC;
+    border-radius: 0.25rem;
+}
+
+.popover .popover-content:before, 
+.popover .popover-content:after {
+    position: absolute;
+    display: block;
+    content: "";
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: transparent;
+}
+  
+.popover .popover-content h3 {
+    color: #000000 !important;
+}
+  
+.popover .popover-content .popover-header {
+    padding: 0.5rem 0.75rem !important;
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: inherit;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid #ebebeb;
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.popover .popover-content .popover-header:empty {
+    display: none;
+}
+
+.popover .popover-content .popover-body {
+    padding: 0.5rem 0.75rem !important;
+    color: #212529;
+    text-align: justify;
+}
+
+.popover .popover-content .popover-body p {
+    font-size: 1em;
+    padding: 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.popover .popover-content .popover-body p:last-child {
+    margin-bottom: 5px;
+}
+  
+.popover[data-width] .popover-content {
+    width: attr(data-width) !important;
+}
+  
+.popover[data-height] .popover-content {
+    height: attr(data-height) !important;
+}
+  
+.popover[data-placement^=top] [data-toggle^=popover] {
+    cursor: pointer;
+    outline: none;
+}
+
+.popover[data-placement^=top] [data-toggle^=popover]:focus, 
+.popover[data-placement^=top] [data-toggle^=popover]:focus-within {
+    color: var(--color-link-hover);
+}
+
+.popover[data-placement^=top] [data-toggle^=popover]:focus + .popover-content, 
+.popover[data-placement^=top] [data-toggle^=popover]:focus-within + .popover-content {
+    transform: translate3d(-50%, 0, 0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.popover[data-placement^=top] .popover-content {
+    bottom: calc(100% + 1em);
+    left: 50%;
+    transform: translate3d(-50%, -15px, 0);
+}
+  
+.popover[data-placement^=top] .popover-content:before, 
+.popover[data-placement^=top] .popover-content:after {
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    border-width: 0.5rem 0.5rem 0 0.5rem;
+}
+  
+.popover[data-placement^=top] .popover-content:before {
+    border-color: #CCCCCC transparent transparent transparent;
+    margin-bottom: 0;
+}
+
+.popover[data-placement^=top] .popover-content:after {
+    border-color: #ffffff transparent transparent transparent;
+    margin-bottom: 1px;
+    z-index: 2;
+}
+
+.popover[data-placement^=bottom] [data-toggle^=popover] {
+    cursor: pointer;
+    outline: none;
+}
+  
+.popover[data-placement^=bottom] [data-toggle^=popover]:focus, 
+.popover[data-placement^=bottom] [data-toggle^=popover]:focus-within {
+    color: var(--color-link-hover);
+}
+
+.popover[data-placement^=bottom] [data-toggle^=popover]:focus + .popover-content, 
+.popover[data-placement^=bottom] [data-toggle^=popover]:focus-within + .popover-content {
+    transform: translate3d(-50%, 0, 0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.popover[data-placement^=bottom] .popover-content {
+    top: calc(100% + 1em);
+    left: 50%;
+    transform: translate3d(-50%, -15px, 0);
+}
+  
+.popover[data-placement^=bottom] .popover-content:before, 
+.popover[data-placement^=bottom] .popover-content:after {
+    top: -0.5rem;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    border-width: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.popover[data-placement^=bottom] .popover-content:before {
+    border-color: transparent transparent #CCCCCC transparent;
+    margin-top: 0;
+}
+
+.popover[data-placement^=bottom] .popover-content:after {
+    border-color: transparent transparent #ffffff transparent;
+    margin-top: 1px;
+    z-index: 2;
+}
+  
+.popover[data-placement^=left] [data-toggle^=popover] {
+    cursor: pointer;
+    outline: none;
+}
+  
+.popover[data-placement^=left] [data-toggle^=popover]:focus, 
+.popover[data-placement^=left] [data-toggle^=popover]:focus-within {
+    color: var(--color-link-hover);
+}
+
+.popover[data-placement^=left] [data-toggle^=popover]:focus + .popover-content, 
+.popover[data-placement^=left] [data-toggle^=popover]:focus-within + .popover-content {
+    transform: translate3d(0, -50%, 0);
+    visibility: visible;
+    opacity: 1;
+}
+  
+.popover[data-placement^=left] .popover-content {
+    top: 50%;
+    right: calc(100% + 1em);
+    transform: translate3d(15px, -50%, 0);
+}
+
+.popover[data-placement^=left] .popover-content:before, 
+.popover[data-placement^=left] .popover-content:after {
+    top: 50%;
+    right: -0.5rem;
+    transform: translate3d(0, -50%, 0);
+    border-width: 0.5rem 0 0.5rem 0.5rem;
+}
+  
+.popover[data-placement^=left] .popover-content:before {
+    border-color: transparent transparent transparent #CCCCCC;
+    margin-right: 0;
+}
+
+.popover[data-placement^=left] .popover-content:after {
+    border-color: transparent transparent transparent #ffffff;
+    margin-right: 1px;
+    z-index: 2;
+}
+
+.popover[data-placement^=right] [data-toggle^=popover] {
+    cursor: pointer;
+    outline: none;
+}
+
+.popover[data-placement^=right] [data-toggle^=popover]:focus, 
+.popover[data-placement^=right] [data-toggle^=popover]:focus-within {
+    color: var(--color-link-hover);
+}
+  
+.popover[data-placement^=right] [data-toggle^=popover]:focus + .popover-content, 
+.popover[data-placement^=right] [data-toggle^=popover]:focus-within + .popover-content {
+    transform: translate3d(0, -50%, 0);
+    visibility: visible;
+    opacity: 1;
+}
+  
+.popover[data-placement^=right] .popover-content {
+    top: 50%;
+    left: calc(100% + 1em);
+    transform: translate3d(15px, -50%, 0);
+}
+
+.popover[data-placement^=right] .popover-content:before, 
+.popover[data-placement^=right] .popover-content:after {
+    top: 50%;
+    left: -0.5rem;
+    transform: translate3d(0, -50%, 0);
+    border-width: 0.5rem 0.5rem 0.5rem 0;
+}
+  
+.popover[data-placement^=right] .popover-content:before {
+    border-color: transparent #CCCCCC transparent transparent;
+    margin-left: 0;
+}
+  
+.popover[data-placement^=right] .popover-content:after {
+    border-color: transparent #ffffff transparent transparent;
+    margin-left: 1px;
+    z-index: 2;
+}
+
+/**
+*   Menu / Barre d'outils
+**/
+.menu {
+    display: flex;
+}
+
+.menu .actions {
+    float: right;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.menu .actions i {
+    cursor: pointer;
+}
+
+.menu .actions .dropmenu {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.menu .actions .dropmenu ul {
+    list-style: none;
+    margin-top: 10px;
+    line-height: 1;
+    padding-left: 0;
+    background-color: #fff;
+    border: 1px solid #CCC;
+    border-radius: .25rem;
+    width: 220px;
+    right: -15px;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    z-index: -10;
+    box-shadow: 0px 2px 6px -1px rgba(32, 33, 36, 0.28);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+}
+
+.menu .actions .dropmenu ul li {
+    margin: 0px;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #d7d3d7;;
+    text-transform: unset !important;
+}
+
+.menu .actions .dropmenu ul li:hover {
+    width: 100%;
+    color: var(--blue);
+}
+
+.menu .actions .dropmenu ul li:last-child {
+    border-bottom: 0;
+}
+
+.menu .actions .dropmenu ul li a {
+    width: inherit;
+    text-decoration: none;
+    color: #000000;
+    cursor: pointer;
+}
+
+.menu .actions .dropmenu ul li a:hover {
+    width: inherit;
+    color: var(--blue);
+}
+
+.menu .actions .dropmenu ul li i {
+    margin-right: 5px;
+}
+
+.menu .actions .dropmenu ul::after, 
+.menu .actions .dropmenu ul::before {
+    position: absolute;
+    bottom: 100%;
+    right: 20px;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+}
+
+.menu .actions .dropmenu ul::before {
+    border-color: transparent;
+    border-bottom-color: #CCC;
+    border-width: 8px;
+    margin-right: -8px !important;
+}
+
+.menu .actions .dropmenu ul::after {
+    border-color: transparent;
+    border-bottom-color: #FFF;
+    border-width: 6px;
+    margin-right: -6px !important;
+}
+
+.menu .actions .dropmenu ul li {
+    margin: 0px;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #d7d3d7;
+    text-transform: unset !important;
+}
+
+.menu .actions i:focus-within + .dropmenu ul,
+.menu .actions button:focus + .dropmenu ul {
+    opacity: 1;
+    z-index: 20;
+    pointer-events: all;
+    transform: translateY(0px);
+}
+
+/**
+*   Crédits
+**/
+#credits .modal-wrapper {
+    width: unset;
+}
+
+#credits .modal-content {
+    height: 500px;
+    padding: 0px;
+    border-radius: 0;
+    margin: 0;
+}
+
+.credits {
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.credits-wrapper {
+    user-select: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+    font: 300 30px/1 var(--credits-fonts), sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    animation: 60s credits linear infinite;
+    z-index: 100;
+}
+
+.credits-wrapper ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.credits-wrapper.kotor {
+    color: #96e3ff;
+}
+
+.credits-wrapper.kotor .movie-job {
+    color: #efbc55;
+}
+
+.movie {
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+
+.movie.blue {
+    color: #1da5d5;
+}
+
+.movie-subtitle {
+    margin-top: -40px;
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+.movie-job {
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+  
+.movie-name {
+    margin-bottom: 50px;
+    font-size: 35px;
+}
+
+.movie-text {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.movie-text p {
+    font-size: 14px;
+    text-align: justify;
+}
+
+.movie-copyright {
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+@keyframes credits {
+    0% {
+      top: 100%;
+    }
+    100% {
+      top: -500%;
+    }
+}
+
+/**
+*   Menu à gauche
+**/
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    width: var(--width-sidebar);
+}
+
+#sidebar.left {
+    margin-right: 10px;
+}
+
+.sidebar-block {
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+ 
+.sidebar-block .head,
+.compass .head {
+    height: 30px;
+    border-bottom: solid 1px #ccc;
+    padding: 2px 5px 2px 10px;
+}
+
+.sidebar-block .head.noborder {
+    border-bottom: none;
+}
+
+.sidebar-block .content {
+    padding: 10px 5px 10px 5px;
+}
+
+.sidebar-block .content .avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-block .content img {
+    border-radius: 5px;
+}
+
+.sidebar-block .datetime {
+    font-size: 13px;
+    padding: 5px;
+    text-align: center;
+}
+  
+.sidebar-block .footer {
+    clear: both;
+    height: 20px;
+    border-top: solid 1px #ccc;
+    padding: 5px 5px 5px 10px;
+}
+  
+.sidebar-block .title,
+.compass .title {
+    float: left;
+    text-align: left;
+    font-weight: bold;
+}
+
+.sidebar-block .title.center {
+    float: none;
+    text-align: center;
+}
+  
+.sidebar-block .toggle {
+    float: right;
+    text-align: right;
+    padding-right: 5px;
+}
+  
+.sidebar-block p {
+    padding: 10px;
+    margin-bottom: 0px;
+}
+  
+.sidebar-block ul {
+    margin: 0 5px 10px 5px;
+    padding: 0;
+}
+
+.sidebar-block ul li {
+    list-style-type: none;
+}
+  
+.sidebar-block a {
+    color: #000000;
+    text-decoration: none;
+}
+  
+.sidebar-block a:hover {
+    color:blue;
+}
+
+.sidebar-block .content ul li {
+    display: flex;
+    /*justify-content: space-between;*/
+}
+
+.sidebar-block .content ul li:last-child {
+    margin-bottom: -10px;
+}
+
+.sidebar-block .content ul li span.label {
+    font-weight: bold;
+}
+
+.sidebar-block .content ul li span.label:after {
+    font-weight: normal;
+    content: " : ";
+}
+
+.sidebar-block .content ul li span.value {
+    margin-left: auto;
+}
+
+.sidebar-block-time {
+    margin-bottom: -8px !important;
+}
+
+/**
+*   Boussole
+**/
+.compass .content {
+    padding: 5px;
+}
+
+.compass {
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    text-align: center;
+    user-select: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.compass .line {
+    display: flex;
+    margin-bottom: 1px;
+}
+
+.compass .line:last-child {
+    margin-bottom: 5px;
+}
+
+.compass button {
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+}
+
+.compass button i {
+    padding: 3px;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.compass button i:hover {
+    color: blue;
+}
+
+.compass button i.disabled {
+    color: #AAA;
+}
+
+.compass button i.disabled:hover {
+    color: #AAA;
+}
+
+.compass button i.fas.fa-eye {
+    margin-left: -2px;
+}
+
+.compass .content {
+    display: flex;
+    clear: both !important;
+    padding-bottom: 0;
+}
+
+.compass .content .separator {
+    display: block;
+    content: '';
+    border-right: solid 1px #CCC;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 100px;
+}
+
+.compass .content .directional {
+   float: left;
+}
+
+.compass .content .options {
+    float: right;
+}
+
+.compass .arrow-nw {
+    transform: rotate(45deg);
+}
+
+.compass .rotate-45 {
+    transform: rotate(45deg);
+}
+
+/**
+*   Contenu
+**/
+.page-infos {
+    height: 144px;
+    max-height: 150px;
+}
+
+.page-content {
+    /*width: calc(100% - var(--width-sidebar));*/
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/**
+*   Jet de dés
+**/
+.dices-content {
+    border: solid 1px #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dices-modifier {
+    --dices-modifier-color: #008000;
+    color: var(--dices-modifier-color);
+    font-weight: bold;
+}
+
+.dices-content .title {
+    font-weight: bold;
+    margin-top: -25px;
+    border: solid 1px #FFF;
+}
+
+/**
+*   Console
+**/
+.console {
+    display: flex;
+    width: 100%;
+}
+
+.console form {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.console input {
+    width: 100%;
+    padding: .175rem .55rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    margin-right: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.console input::before {
+    content: '> ';
+    border: 1px solid #ccc;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    width: 30px;
+}
+
+.console button {
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    height: 31.6px;
+    padding: 0 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.console button:hover {
+    color: blue;
+}
