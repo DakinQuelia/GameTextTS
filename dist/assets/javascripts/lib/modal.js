@@ -4,6 +4,7 @@
 *	Auteur 		: Dakin Quelia
 *	Version 	: 1.0.0.
 *****************************************/
+import "../../stylesheets/librairies/modal.css";
 class Modal {
     focusables;
     modal;
