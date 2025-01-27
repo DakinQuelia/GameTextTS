@@ -1,13 +1,13 @@
 {
-  "name": "language",
+  "name": "gametextts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dakin Quelia",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.7.3"
