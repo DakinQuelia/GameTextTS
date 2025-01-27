@@ -48,7 +48,7 @@ class Modal
 
         if (target.startsWith('#'))
         {
-            this.modal = document.querySelector(target);
+            this.modal = elTarget;
         }
         else
         {
