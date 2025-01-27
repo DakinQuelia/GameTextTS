@@ -24,7 +24,8 @@ const USERAGENT: string = navigator.userAgent;
 const MINUTES: number = 60;
 const HOURS: number = 60 * MINUTES;
 const DAYS: number = 24 * HOURS;
-const LAUNCHDATE: number = $countdown ? Date.parse($countdown.dataset.time) / 1000 : 0;
+const TIME: string = $countdown.dataset.time ? $countdown.dataset.time : "";
+const LAUNCHDATE: number = $countdown ? Date.parse(TIME) / 1000 : 0;
 const PAGES = document.querySelectorAll(".form-page") ? document.querySelectorAll(".form-page") : '';
 const PAGE: HTMLElement | null = document.querySelector(".form-page");
 const NUMBER_PAGES: number = PAGES.length;
@@ -198,11 +199,28 @@ class Utils
 			{
 				o.addEventListener('click', (e: Event) =>
 				{
+                    if (o.parentNode === null)
+                    {
+                        return false;
+                    }
+
 					let drop = o.parentNode.parentNode;
+
+                    if (drop === null)
+                    {
+                        return false;
+                    }
+
 					let label = drop.querySelector('.droplabel') as HTMLLabelElement;
-					let value = o.hasAttribute('data-value') ? o.getAttribute('data-value') : "";
+					let value = o.hasAttribute('data-value') ? o.getAttribute('data-value') : "" as any;
 					
 					label.setAttribute('data-value', value);
+
+                    if (o.textContent === null)
+                    {
+                        return false;
+                    }
+
 					label.innerHTML = o.textContent;    
 				});
 			});
@@ -364,7 +382,7 @@ class Utils
         let tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
         let commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
         let before = input;
-        let after = input;
+        let after = input as any;
 
         while(true) 
         {
@@ -461,13 +479,13 @@ class Utils
 		// Si la fenêtre n'existe pas, on la crée.
 		if (typeof Modal.modal === "undefined")
 		{
-			return Modal.CreateModal(data.id, data.title, data.footer, data.content);
+			return Modal.CreateModal(data);
 		}
 
 		// Si on ne définit pas d'objet data, on lui donne une valeur nulle.
 		if (data === null)
 		{
-			data = {};
+			data = { id: 0, title: "", footer: "", content: "" };
 		}
 
 		// Si la fenêtre existe, on l'ouvre.
@@ -499,7 +517,12 @@ class Utils
                 const parent = parentTarget.parentNode.parentNode;
                 const target = parent.nextElementSibling;
                 const head = parent;
-                const icon = e.target;
+                const icon = parentTarget as HTMLElement;
+
+                if (parentTarget === null)
+                {
+                    return false;
+                }
 
                 if (target.style.display === "block")
                 {

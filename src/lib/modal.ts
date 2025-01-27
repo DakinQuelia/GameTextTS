@@ -150,10 +150,15 @@ class Modal
     * 
     *   @param {{ id: number, title: string, content: any, footer: any }} data              Données de la fenêtre
     * 
-    *   @return {void}
+    *   @return {boolean}
     **/
-    CreateModal(data: { id: number, title: string, content: any, footer: any }): void
+    CreateModal(data: { id: number, title: string, content: any, footer: any }): boolean
     {
+        if (data === null || typeof data === "undefined")
+        {
+            return false;
+        }
+
         const html_data = `
             <div id="${data.id}" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none">
               <div class="modal-wrapper" id="modalstop">
@@ -175,6 +180,8 @@ class Modal
         const html = new DOMParser().parseFromString(html_data, "text/xml");
 
         document.body.appendChild(html);
+
+        return true;
     }
 
     /**
