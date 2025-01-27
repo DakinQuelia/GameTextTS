@@ -6,7 +6,7 @@
 *****************************************/
 import "../../stylesheets/librairies/modal.css";
 
-class Modal 
+class Modal
 {
     public focusables: any[];
     public modal: any | null;
@@ -20,7 +20,6 @@ class Modal
     **/
     constructor()
     {
-        // Les variables globales
         this.focusableselector = 'button, a, input, textarea';
         this.previouslyfocused = null;
         this.modal = null;

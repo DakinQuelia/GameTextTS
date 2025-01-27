@@ -2,9 +2,15 @@
     "compilerOptions": {
         "outDir": "dist/assets/javascripts",
         "target": "ES2022",
-        "strict": true
+        "strict": true,
+        "moduleResolution": "node",
+        "verbatimModuleSyntax": true
     },
     "files": [
         "src/app.ts"
+    ],
+    "include": [
+        "src/core/types/**/*",       
+        "src/types/settings.d.ts"    
     ]
 }

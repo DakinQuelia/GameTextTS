@@ -11,7 +11,7 @@ export const CSS_ROOT = ASSETS_ROOT + '/stylesheets'; // Dossier :: /assets/styl
 export const SCRIPTS_ROOT = ASSETS_ROOT + '/javascripts'; // Dossier :: /assets/javascripts
 export const DATA_ROOT = ROOT + '/data'; // Dossier :: /data
 export const RESOURCES_ROOT = DATA_ROOT + '/resources'; // Dossier :: /data/resources
-export const DATABASE_ROOT = DATA_ROOT + '/database'; // Dossier :: /data/tabase
+export const DATABASE_ROOT = DATA_ROOT + '/database'; // Dossier :: /data/database
 export const FILES = {
     'styles': CSS_ROOT + '/' + THEME + '/style.css', // Thème et fichier CSS
     'player': RESOURCES_ROOT + '/player.json', // Informations sur le joueur

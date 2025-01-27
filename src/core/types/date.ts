@@ -1,7 +1,7 @@
 /*****************************************
-*	GameTextTS :: types/DateString.ts
-*   ---------------------------------
+*	GameTextTS :: types/date.ts
+*   ---------------------------
 *	Auteur 		: Dakin Quelia
 *	Version 	: 1.0.0. 
 *****************************************/
-type DateString = string;
+export type DateString = string;

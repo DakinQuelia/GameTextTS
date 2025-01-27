@@ -16,7 +16,6 @@ class Modal {
     *   @return {void}
     **/
     constructor() {
-        // Les variables globales
         this.focusableselector = 'button, a, input, textarea';
         this.previouslyfocused = null;
         this.modal = null;
@@ -33,7 +32,7 @@ class Modal {
         event.preventDefault();
         const eventTarget = event.currentTarget;
         const target = eventTarget.getAttribute('data-href');
-        const elTarget = (target !== null) ? document.querySelector(target) : '';
+        const elTarget = (target !== null) ? document.querySelector(target) : null;
         if (target === null || elTarget === null) {
             throw new Error(`La cible ${target} n'existe pas !`);
         }
