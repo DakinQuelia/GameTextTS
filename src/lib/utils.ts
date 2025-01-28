@@ -509,20 +509,15 @@ class Utils
             {
                 const parentTarget = e.target as HTMLElement;
 
-                if (parentTarget !== null)
-                {
-                    return;
-                }
-
-                const parent = parentTarget.parentNode.parentNode;
-                const target = parent.nextElementSibling;
-                const head = parent;
-                const icon = parentTarget as HTMLElement;
-
                 if (parentTarget === null)
                 {
                     return false;
                 }
+
+                const parent = parentTarget.parentNode.parentNode;
+                const target = parent.nextElementSibling;
+                const head = parent as HTMLElement;
+                const icon = parentTarget as HTMLElement;
 
                 if (target.style.display === "block")
                 {
