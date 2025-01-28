@@ -582,7 +582,7 @@ class Utils
     **/
     LoadScript(filename: string): void
     {   
-        const folder = ROOT + '/scripts/game/game';
+        const folder = ROOT + '/scripts/core';
 
         let script = document.createElement('script');
         script.setAttribute('src', folder + '/' + filename + this.files_ext);
