@@ -4,7 +4,6 @@
 *	Auteur 		: Dakin Quelia
 *	Version 	: 1.0.0.
 *****************************************/
-import "../../stylesheets/librairies/modal.css";
 class Modal {
     focusables;
     modal;
@@ -37,7 +36,7 @@ class Modal {
             throw new Error(`La cible ${target} n'existe pas !`);
         }
         if (target.startsWith('#')) {
-            this.modal = document.querySelector(target);
+            this.modal = elTarget;
         }
         else {
             this.modal = await this.LoadModal(target);
@@ -112,9 +111,12 @@ class Modal {
     *
     *   @param {{ id: number, title: string, content: any, footer: any }} data              Données de la fenêtre
     *
-    *   @return {void}
+    *   @return {boolean}
     **/
     CreateModal(data) {
+        if (data === null || typeof data === "undefined") {
+            return false;
+        }
         const html_data = `
             <div id="${data.id}" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none">
               <div class="modal-wrapper" id="modalstop">
@@ -134,6 +136,7 @@ class Modal {
         `;
         const html = new DOMParser().parseFromString(html_data, "text/xml");
         document.body.appendChild(html);
+        return true;
     }
     /**
     *   Cette méthode permet de fermer la fenêtre modale.
@@ -152,9 +155,9 @@ class Modal {
         }
         this.modal.setAttribute('aria-hidden', 'true');
         this.modal.removeAttribute('aria-modal');
-        this.modal.querySelector('#close').removeEventListener('click', () => this.CloseModal(event));
-        this.modal.querySelector('#btnclose').removeEventListener('click', () => this.CloseModal(event));
-        this.modal.querySelector('#modalstop').removeEventListener('click', () => this.StopPropagation(event));
+        this.modal.querySelector('#close')?.removeEventListener('click', () => this.CloseModal(event));
+        this.modal.querySelector('#btnclose')?.removeEventListener('click', () => this.CloseModal(event));
+        this.modal.querySelector('#modalstop')?.removeEventListener('click', () => this.StopPropagation(event));
         this.modal.addEventListener('animationend', this.HideModal(this.modal));
     }
     /**
@@ -165,6 +168,9 @@ class Modal {
     *   @return {void}
     **/
     HideModal(modal) {
+        if (modal === null) {
+            return;
+        }
         modal.style.display = "none";
         modal.removeEventListener('animationend', this.HideModal);
         modal = null;
@@ -188,7 +194,7 @@ class Modal {
     **/
     FocusModal(event) {
         event.preventDefault();
-        let index = this.focusables.findIndex(f => f === this.modal.querySelector(':focus'));
+        let index = this.focusables.findIndex(f => f === this.modal?.querySelector(':focus'));
         if (event.shiftKey === true) {
             index--;
         }

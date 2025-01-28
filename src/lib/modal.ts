@@ -4,12 +4,10 @@
 *	Auteur 		: Dakin Quelia
 *	Version 	: 1.0.0. 
 *****************************************/
-import "../../stylesheets/librairies/modal.css";
-
 class Modal
 {
     public focusables: any[];
-    public modal: any | null;
+    public modal: any;
     public focusableselector: string;
     public previouslyfocused: any;
 
@@ -207,9 +205,9 @@ class Modal
 
         this.modal.setAttribute('aria-hidden', 'true');
         this.modal.removeAttribute('aria-modal');
-        this.modal.querySelector('#close').removeEventListener('click', () => this.CloseModal(event));
-        this.modal.querySelector('#btnclose').removeEventListener('click', () => this.CloseModal(event));
-        this.modal.querySelector('#modalstop').removeEventListener('click', () => this.StopPropagation(event));
+        this.modal.querySelector('#close')?.removeEventListener('click', () => this.CloseModal(event));
+        this.modal.querySelector('#btnclose')?.removeEventListener('click', () => this.CloseModal(event));
+        this.modal.querySelector('#modalstop')?.removeEventListener('click', () => this.StopPropagation(event));
         this.modal.addEventListener('animationend', this.HideModal(this.modal));
     }
 
@@ -222,6 +220,11 @@ class Modal
     **/
     HideModal(modal: any): void
     {
+        if (modal === null)
+        {
+            return;
+        }
+
         modal.style.display = "none";
         modal.removeEventListener('animationend', this.HideModal);
         modal = null;
@@ -250,7 +253,7 @@ class Modal
     {
         event.preventDefault();
 
-        let index = this.focusables.findIndex(f => f === this.modal.querySelector(':focus'));
+        let index = this.focusables.findIndex(f => f === this.modal?.querySelector(':focus'));
     
         if (event.shiftKey === true)
         {
