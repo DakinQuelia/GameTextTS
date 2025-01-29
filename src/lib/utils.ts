@@ -1,5 +1,6 @@
 /*****************************************
-*	CorvanisLang      :: Utils
+*	Utilitaires
+*   -----------
 *	Auteur 		       : Dakin Quelia
 *	Version 	       : 1.0.0. 
 *****************************************/
@@ -552,9 +553,9 @@ class Utils
     *   
     *   @param {number[]} items                                                             Tableau d'éléments
     * 
-    *   @return {void}
+    *   @return {number}
     **/
-    Sum(items: number[]): void
+    Sum(items: number[]): number
     {
         return items.reduce((acc: any, item: any) => acc + item, 0);
     }
