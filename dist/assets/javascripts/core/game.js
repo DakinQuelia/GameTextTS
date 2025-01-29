@@ -8,7 +8,6 @@ import { FILES, ROOT, DATA_ROOT, RESOURCES_ROOT, DATABASE_ROOT, SCRIPTS_ROOT } f
 import Config from "../core/config/global.js";
 import Modal from '../lib/modal.js';
 import Utils from '../lib/utils.js';
-import settings from "../../data/settings.js";
 class Game {
     config;
     language;
@@ -241,10 +240,11 @@ class Game {
     *   @return {Promise<{ title: string, author: string, version: string, credits: any[] }>}
     **/
     async DisplayGameInfo() {
-        if (typeof settings === "undefined") {
+        const game_settings = await fetch(`${DATA_ROOT}/settings.json`).catch((err) => { console.log('ERROR :: ' + err); });
+        if (typeof game_settings === "undefined" || game_settings == null) {
             throw new Error("Les paramètres ne sont pas définis !");
         }
-        const game_infos = settings;
+        const game_infos = await game_settings.json();
         /* Titre de la page */
         document.title = `Jeu :: ${game_infos.title}`;
         return {

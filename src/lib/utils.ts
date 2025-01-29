@@ -169,11 +169,16 @@ class Utils
     * 
     *   @return {void}
 	**/
-	CustomSelect(): void
+	CustomSelect(): any
 	{
 		let dropdown = document.querySelectorAll('.dropselect') as NodeListOf<Element>;
 		let dropmenu = document.querySelectorAll('.dropmenu') as NodeListOf<Element>;
 		let optionslist = document.querySelectorAll('.dropmenu-item') as NodeListOf<Element>;
+
+        if (typeof dropdown === "undefined")
+        {
+            return false;
+        }
 
 		for (let i = 0; i < dropdown.length; i++)
 		{

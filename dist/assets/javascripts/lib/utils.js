@@ -137,6 +137,9 @@ class Utils {
         let dropdown = document.querySelectorAll('.dropselect');
         let dropmenu = document.querySelectorAll('.dropmenu');
         let optionslist = document.querySelectorAll('.dropmenu-item');
+        if (typeof dropdown === "undefined") {
+            return false;
+        }
         for (let i = 0; i < dropdown.length; i++) {
             // On ajoute un évènement clic
             window.addEventListener('click', (e) => {
