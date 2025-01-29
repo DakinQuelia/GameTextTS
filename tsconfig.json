@@ -4,7 +4,8 @@
         "target": "ES2022",
         "strict": true,
         "moduleResolution": "node",
-        "verbatimModuleSyntax": true
+        "verbatimModuleSyntax": true,
+        "noUncheckedIndexedAccess": true
     },
     "files": [
         "src/app.ts"

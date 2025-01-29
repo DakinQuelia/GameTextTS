@@ -514,10 +514,20 @@ class Utils
                     return false;
                 }
 
-                const parent = parentTarget.parentNode.parentNode;
-                const target = parent.nextElementSibling;
+                if (parentTarget.parentNode === null)
+                {
+                    return false;
+                }
+
+                const parent = parentTarget.parentNode.parentNode as HTMLElement;
+                const target = parent.nextElementSibling as HTMLElement;
                 const head = parent as HTMLElement;
                 const icon = parentTarget as HTMLElement;
+
+                if (target === null)
+                {
+                    return false;
+                }
 
                 if (target.style.display === "block")
                 {
