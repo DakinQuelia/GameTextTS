@@ -40,7 +40,7 @@ class Dices
     }
 
     /**
-    *   Cette méthode permet d'exécuter le lancer de dés.
+    *   Cette méthode permet d'exécuter le lanscer de dés.
     * 
     *   @param {string} dices                                           Jet de dés (exemple : 1d10)
     *   @param {{ modifier: string, text: string }} data                Données : { modifier: "+1", text: "..." }
@@ -49,7 +49,7 @@ class Dices
     **/
     Rolls(dices: string, data: { modifier: string; text: string; }): boolean
     {
-        let rolls = [] as number[];
+        let rolls: number[] = [];
         let dicesMatch = this.format.exec(dices);
 
         if (dicesMatch === null)
@@ -71,7 +71,7 @@ class Dices
 
         this.result = {
             sides: this.sides,
-            dices:  this.dices,
+            dices: this.dices,
             text: this.text,
             modifier: this.modifier,
             rolls: rolls
@@ -87,7 +87,7 @@ class Dices
     * 
     *   @return {number}
     **/
-    GetDices()
+    GetDices(): number
     {
         return this.dices;
     }
@@ -97,7 +97,7 @@ class Dices
     * 
     *   @return {number}
     **/
-    GetSides()
+    GetSides(): number
     {
         return this.sides;
     }
@@ -132,16 +132,19 @@ class Dices
     /**
     *   Cette méthode permet de récupérer le total du modificateur.
     * 
-    *   @return {object}
+    *   @return {{ color: string, total: number }}
     **/
-    GetModifier(): object
+    GetModifier():  { color: string, total: number }
     {
         let total: number;
         let color: string;
 
         if (this.modifier === null || this.modifier === typeof undefined)
         {
-            return false;
+            return {
+                color: "#000000",
+                total: 0
+            };
         }
 
         let modifier_n = parseInt(this.modifier.slice(1));

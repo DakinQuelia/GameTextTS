@@ -10,4 +10,4 @@ export type Dice = {
     dices: number, 
     text: string|null, 
     modifier: string|null
-}
+};
