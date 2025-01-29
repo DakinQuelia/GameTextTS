@@ -11,7 +11,6 @@
         "src/app.ts"
     ],
     "include": [
-        "src/core/types/**/*",       
-        "src/types/settings.d.ts"    
+        "src/core/types/**/*"  
     ]
 }

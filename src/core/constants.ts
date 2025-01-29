@@ -12,7 +12,7 @@ export const SCRIPTS_ROOT: string = ASSETS_ROOT + '/javascripts';           // D
 export const DATA_ROOT: string = ROOT + '/data';                            // Dossier :: /data
 export const RESOURCES_ROOT: string = DATA_ROOT + '/resources';             // Dossier :: /data/resources
 export const DATABASE_ROOT: string = DATA_ROOT + '/database';               // Dossier :: /data/database
-export const FILES: {} = {
+export const FILES = {
     'styles'        : CSS_ROOT + '/' + THEME + '/style.css',                // Thème et fichier CSS
     'player'        : RESOURCES_ROOT + '/player.json',                      // Informations sur le joueur
     'rules'         : RESOURCES_ROOT + '/rules.json',                       // Les règles du jeu

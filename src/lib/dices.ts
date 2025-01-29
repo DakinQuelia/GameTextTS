@@ -51,6 +51,7 @@ class Dices
     {
         let rolls: number[] = [];
         let dicesMatch = this.format.exec(dices);
+        let array = [this.result] as never; //
 
         if (dicesMatch === null)
         {
@@ -77,7 +78,9 @@ class Dices
             rolls: rolls
         };
 
-        this.results.push(this.result);
+      
+
+        this.results.push(array);
 
         return true;
     }
