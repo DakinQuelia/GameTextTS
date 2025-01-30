@@ -146,11 +146,13 @@ class Utils {
                 // Empêche la propagation
                 e.stopPropagation();
                 const target = e.target;
-                if (dropdown[i].contains(target)) {
-                    dropmenu[i].classList.toggle('active');
+                const drop = dropdown[i];
+                const menu = dropmenu[i];
+                if (drop.contains(target)) {
+                    menu.classList.toggle('active');
                 }
                 else {
-                    dropmenu[i].classList.remove('active');
+                    menu.classList.remove('active');
                 }
             });
             // On boucle les options
@@ -238,8 +240,9 @@ class Utils {
     **/
     UpdateCountdownDOM(diff) {
         Object.keys(diff).forEach((key) => {
-            if (previousdiff[key] !== diff[key]) {
-                $countele[key].innerText = diff[key];
+            const diffkey = diff[key];
+            if (previousdiff[key] !== diffkey) {
+                $countele[key].innerText = diffkey;
             }
         });
         previousdiff = diff;

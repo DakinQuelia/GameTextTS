@@ -1,0 +1,39 @@
+{
+    "name": "Dakin Quelia",
+    "gender": "MALE",
+    "appareance": "face.png",
+    "attributes": {
+        "strength":      { "base": 0, "modifier": null },
+        "dexterity":     { "base": 0, "modifier": null },
+        "constitution":  { "base": 0, "modifier": null },
+        "intelligence":  { "base": 0, "modifier": null },
+        "wisdom":        { "base": 0, "modifier": null },
+        "charisma":      { "base": 0, "modifier": null },
+        "vigor":         { "base": 4, "modifier": null },
+        "reflex":        { "base": 4, "modifier": null },
+        "willingness":   { "base": 2, "modifier": null }
+    },
+    "money": 300,
+    "force_points": 0,
+    "max_force_points": 0,
+    "hit_points": 30,
+    "max_hit_points": 30,
+    "experience": 0,
+    "alignment": 50,
+    "classes": {
+        "0": { "name": "Jedi Gardien", "color": "#1da5d5", "level": 5 },
+        "1": { "name": "Maître Jedi", "color": "#000000", "level": 5 }
+    },
+    "skills": {
+        "computeruse":      { "base": 0, "modifier": null },
+        "persuade":         { "base": 0, "modifier": null },
+        "demolitions":      { "base": 0, "modifier": null },
+        "stealth":          { "base": 0, "modifier": null },
+        "awareness":        { "base": 0, "modifier": null },
+        "security":         { "base": 0, "modifier": null },
+        "repair":           { "base": 0, "modifier": null },
+        "treatinjury":      { "base": 0, "modifier": null }
+    },
+    "feats": [],
+    "inventory": []
+}

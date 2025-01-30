@@ -190,7 +190,7 @@ class Game {
     async Init() {
         const savename = document.querySelector('#savename');
         const gamename = savename ? savename.value : null;
-        this.lang = await this.LoadText();
+        //this.lang = await this.LoadText();
         // Si le navigateur est Internet Explorer, on quitte le script.
         if (this.IsIE()) {
             console.error(`L'éditeur ne supporte pas Internet Explorer. Veuillez utiliser un navigateur moderne tel que : Chrome / Firefox / Edge / Safari !`);
@@ -237,27 +237,32 @@ class Game {
     /**
     *   Cette méthode charge les paramètres du jeu.
     *
-    *   @return {Promise<{ title: string, author: string, version: string, credits: any[] }>}
+    *   @return {Promise<T>}                                                    // { title: string, author: string, version: string, credits: any[] }
     **/
     async DisplayGameInfo() {
-        const game_settings = await fetch(`${DATA_ROOT}/settings.json`).catch((err) => { console.log('ERROR :: ' + err); });
-        if (typeof game_settings === "undefined" || game_settings == null) {
+        const game_settings = await fetch(`${DATA_ROOT}/settings.js`).catch((err) => { console.log('ERROR :: ' + err); });
+        if (typeof game_settings === "undefined" || game_settings === null) {
             throw new Error("Les paramètres ne sont pas définis !");
         }
         const game_infos = await game_settings.json();
+
+        console.log(game_infos);
+
         /* Titre de la page */
         document.title = `Jeu :: ${game_infos.title}`;
-        return {
-            title: game_infos['title'],
-            author: game_infos['author'],
-            version: game_infos['version'],
-            credits: game_infos['credits']
-        };
+        return new Promise((resolve, reject) => {
+            return {
+                title: game_infos['title'],
+                author: game_infos['author'],
+                version: game_infos['version'],
+                credits: game_infos['credits']
+            };
+        });
     }
     /**
     *   Cette méthode permet de récupérer les informations sur le joueur.
     *
-    *   @return {Promise}
+    *   @return {Promise<any>}
     **/
     async GetPlayer() {
         return await fetch(`${FILES['player']}`)
