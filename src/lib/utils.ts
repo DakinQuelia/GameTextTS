@@ -189,14 +189,16 @@ class Utils
 				e.stopPropagation();
 
                 const target = e.target as HTMLElement;
+                const drop = dropdown[i] as HTMLElement;
+                const menu = dropmenu[i] as HTMLElement;
 
-				if (dropdown[i].contains(target))
+				if (drop.contains(target))
 				{
-					dropmenu[i].classList.toggle('active');
+					menu.classList.toggle('active');
 				}
 				else
 				{
-					dropmenu[i].classList.remove('active');
+					menu.classList.remove('active');
 				}
 			});
 
@@ -316,9 +318,11 @@ class Utils
     {
         Object.keys(diff).forEach((key) => 
         {
-            if (previousdiff[key] !== diff[key])
+            const diffkey = diff[key];
+
+            if (previousdiff[key] !== diffkey)
             {
-                $countele[key].innerText = diff[key];
+                $countele[key].innerText = diffkey;
             }
         });
 
