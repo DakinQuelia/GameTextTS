@@ -9,6 +9,7 @@ export const ROOT: string = location.protocol + '//' + location.host;       // D
 export const ASSETS_ROOT: string = ROOT + '/assets';                        // Dossier :: /assets
 export const CSS_ROOT: string = ASSETS_ROOT + '/stylesheets';               // Dossier :: /assets/stylesheets
 export const SCRIPTS_ROOT: string = ASSETS_ROOT + '/javascripts';           // Dossier :: /assets/javascripts
+export const LANGUAGE_ROOT: string = ASSETS_ROOT + '/javascripts/lang';     // Dossier :: /assets/javascripts/lang
 export const DATA_ROOT: string = ROOT + '/data';                            // Dossier :: /data
 export const RESOURCES_ROOT: string = DATA_ROOT + '/resources';             // Dossier :: /data/resources
 export const DATABASE_ROOT: string = DATA_ROOT + '/database';               // Dossier :: /data/database

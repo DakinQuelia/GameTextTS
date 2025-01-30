@@ -8,8 +8,10 @@ import Game from "./core/game.js";
 import Modal from "./lib/modal.js";
 //import settings from "./data/settings.js";
 
-Modal.Init();
-Game.Init();
+//Modal.Init();
+
+/* Initialisation du jeu */
+await Game.Init();
 
 await Game.DisplayGameInfo();
 

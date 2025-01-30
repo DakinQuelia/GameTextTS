@@ -77,9 +77,7 @@ class Dices
             modifier: this.modifier,
             rolls: rolls
         };
-
-      
-
+        
         this.results.push(array);
 
         return true;
