@@ -323,7 +323,9 @@ class Game
     **/
     async DisplayGameInfo<T extends GameInfo>(): Promise<T>
     {
-        const game_settings = await fetch(`${DATA_ROOT}/settings.js`).catch((err) => { console.log('ERROR :: ' + err); });
+        let request = new Request(`${DATA_ROOT}/settings.js`);
+        
+        const game_settings = await fetch(request).catch((err) => { console.log('ERROR :: ' + err); });
 
         if (typeof game_settings === "undefined" || game_settings === null)
         {

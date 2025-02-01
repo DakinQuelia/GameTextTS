@@ -240,7 +240,8 @@ class Game {
     *   @return {Promise<T>}                                                    // { title: string, author: string, version: string, credits: any[] }
     **/
     async DisplayGameInfo() {
-        const game_settings = await fetch(`${DATA_ROOT}/settings.js`).catch((err) => { console.log('ERROR :: ' + err); });
+        let request = new Request(`${DATA_ROOT}/settings.js`);
+        const game_settings = await fetch(request).catch((err) => { console.log('ERROR :: ' + err); });
         if (typeof game_settings === "undefined" || game_settings === null) {
             throw new Error("Les paramètres ne sont pas définis !");
         }
