@@ -4,8 +4,10 @@
 *	Version 	       : 1.0.0.
 *****************************************/
 export const DEFAULT_LANGUAGE = 'fr'; // Langue par défaut
-export const THEME = "default"; // Thème :: Défaut
-export const ROOT = location.protocol + '//' + location.host + '/' + 'dist'; // Dossier racine
+export const THEME = "default"; // Thème :: Défaut             
+export const DOMAIN = location.protocol + '//' + location.host; // Domaine avec protocole
+export const DIR = location.pathname.slice(0, window.location.pathname.lastIndexOf('/')); // Dossier des pages                              
+export const ROOT = DOMAIN + '/' + DIR; // Dossier racine
 export const ASSETS_ROOT = ROOT + '/assets'; // Dossier :: /assets
 export const CSS_ROOT = ASSETS_ROOT + '/stylesheets'; // Dossier :: /assets/stylesheets
 export const SCRIPTS_ROOT = ASSETS_ROOT + '/javascripts'; // Dossier :: /assets/javascripts

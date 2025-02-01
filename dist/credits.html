@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu :: Crédits</title>
+    <link rel="stylesheet" href="./assets/stylesheets/theme/default/style.css" />>
+</head>
+<body class="credits">
+    <script type="module" defer>
+        import { DisplayGameInfo, DisplayCredits } from './assets/javascripts/core/alias.js';
+
+        const infos = await DisplayGameInfo();
+        const title = document.querySelector("#gametitle");
+
+        DisplayCredits();
+
+        title.innerHTML = `${infos.title}`;
+
+        if (infos.title.length > 18)
+        {
+            title.style.fontSize = "40px";
+        }
+    </script>
+    <div class="credits-wrapper">
+        <div class="movie">
+            <div id="gametitle">???</div>
+        </div>
+        <div id="credits-game"></div>
+        <div class="movie-text">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi blanditiis quidem natus perspiciatis, magni non placeat facilis saepe cumque, eius tempora eligendi? Aliquam ullam sed tempora eligendi sequi unde cupiditate.</p>
+            <p>Quidem, nobis reiciendis. Deleniti porro, cumque non nihil saepe animi, id ut ipsa iste quam explicabo delectus nobis tempora earum impedit odio soluta? Magni architecto quasi accusantium neque molestias dicta.</p>
+            <p>Debitis tenetur iusto vitae sed neque sunt animi asperiores corrupti inventore ullam minus delectus consequatur tempora, placeat illo quae quam mollitia sequi voluptas nesciunt eveniet ducimus id officia explicabo. Facere?</p>
+            <p>Provident reiciendis, molestias qui hic officia eos ad optio expedita autem ipsam fuga beatae ex dolorem dignissimos illum magnam quos doloribus magni modi consectetur dicta sed error! Provident, similique dolor!</p>
+            <p>Beatae maiores similique aperiam odit ad fuga hic asperiores, voluptate aliquam ea voluptas illo, sint consectetur neque quas, tempora enim nam quisquam suscipit? Debitis illum quidem dicta assumenda nesciunt quod!</p>
+        </div>
+        <div class="movie-copyright">©2025 par Dakin Quelia</div>
+    </div>
+</body>
+</html>

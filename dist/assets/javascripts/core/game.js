@@ -5,7 +5,7 @@
 *	Version 	: 1.0.0.
 *****************************************/
 import { FILES, ROOT, DATA_ROOT, RESOURCES_ROOT, DATABASE_ROOT, SCRIPTS_ROOT } from "./constants.js";
-import Config from "../core/config/global.js";
+import Config from "../config/global.js";
 import Modal from '../lib/modal.js';
 import Utils from '../lib/utils.js';
 class Game {
@@ -245,9 +245,6 @@ class Game {
             throw new Error("Les paramètres ne sont pas définis !");
         }
         const game_infos = await game_settings.json();
-
-        console.log(game_infos);
-
         /* Titre de la page */
         document.title = `Jeu :: ${game_infos.title}`;
         return new Promise((resolve, reject) => {

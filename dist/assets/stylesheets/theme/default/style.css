@@ -7,5 +7,5 @@
 @import url('./_vars.css');
 @import url('./common.css');
 @import url('./intro.css');
-@import url('./modal.css');
 @import url('./forms.css');
+@import url('../..//librairies/modal.css');

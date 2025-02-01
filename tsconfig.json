@@ -12,7 +12,14 @@
         "src/app.ts"
     ],
     "include": [
+        "src/core/alias.ts",
+        "src/core/game.ts",
+        "src/core/player.ts",
+        "src/core/constants.ts",
         "src/core/types/**/*",
         "src/lang/*"
+    ],
+    "exclude": [
+        "src/core/**/*",
     ]
 }
