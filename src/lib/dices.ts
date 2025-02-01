@@ -50,7 +50,7 @@ class Dices
     Rolls(dices: string, data: { modifier: string, text: string }): boolean
     {
         let rolls: number[] = [];
-        let dicesMatch = this.format.exec(dices);
+        let dicesMatch = this.format.exec(dices) as any;
         let array = [this.result] as never; //
 
         if (dicesMatch === null || typeof dicesMatch === "undefined")
@@ -120,7 +120,7 @@ class Dices
     **/
     GetResults(): string
     {
-        let rolls = this.result.rolls;
+        let rolls = this.result.rolls as number[];
         let roll = rolls.map(r => r).join(" + ");
         let total = this.GetModifier().total;
         let color = this.GetModifier().color;
@@ -175,6 +175,11 @@ class Dices
     **/
     GetTotal(): number
     {
+        if (typeof this.result.rolls === "undefined")
+        {
+            return 0;
+        }
+
         return Utils.Sum(this.result.rolls);
     }
 

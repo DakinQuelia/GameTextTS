@@ -139,6 +139,9 @@ class Dices {
     *   @return {number}
     **/
     GetTotal() {
+        if (typeof this.result.rolls === "undefined") {
+            return 0;
+        }
         return Utils.Sum(this.result.rolls);
     }
     /**
