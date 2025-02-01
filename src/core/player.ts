@@ -6,6 +6,7 @@
 *****************************************/
 import PlayerInterface from "./interfaces/playerinterface";
 import type { Character } from "./types/character";
+import type { Klass } from "./types/class";
 import { FILES } from "./constants.js";
 import * as Config from "../data/settings.json";
 
@@ -21,7 +22,7 @@ class Player implements PlayerInterface
     public diff: number;
     public name: string;
     public helps: any[];
-    public classes: any[];
+    public classes: Klass[];
     public stats: any[];
     public skills: any[];
     public feats: any[];
@@ -293,11 +294,16 @@ class Player implements PlayerInterface
     * 
     *   @param {number} id                                                      ID de la classe
     * 
-    *   @return {object}
+    *   @return {Klass|undefined}
     **/
-    GetClass(id: number): object 
+    GetClass(id: number): Klass|undefined
     {
         let character_class = this.classes.filter(c => c.id === id)[0];
+
+        if (typeof character_class == "undefined")
+        {
+            throw new Error(`La classe n'existe pas !`);
+        }
 
         return character_class;
     }

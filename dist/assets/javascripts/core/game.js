@@ -240,15 +240,15 @@ class Game {
     *   @return {Promise<T>}                                                    // { title: string, author: string, version: string, credits: any[] }
     **/
     async DisplayGameInfo() {
-        let request = new Request(`${DATA_ROOT}/settings.js`);
-        const game_settings = await fetch(request).catch((err) => { console.log('ERROR :: ' + err); });
+        let file = `${DATA_ROOT}/settings.json`;
+        const game_settings = await fetch(file).catch((err) => { console.log('ERROR :: ' + err); });
         if (typeof game_settings === "undefined" || game_settings === null) {
             throw new Error("Les paramètres ne sont pas définis !");
         }
         const game_infos = await game_settings.json();
         /* Titre de la page */
         document.title = `Jeu :: ${game_infos.title}`;
-        return new Promise((resolve, reject) => {
+        return new Promise(() => {
             return {
                 title: game_infos['title'],
                 author: game_infos['author'],

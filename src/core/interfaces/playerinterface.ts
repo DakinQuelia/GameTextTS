@@ -5,6 +5,7 @@
 *	Version 	: 1.0.0. 
 *****************************************/
 import type { Character } from "../types/character";
+import type { Klass } from "../types/class";
 
 declare var PlayerInterface: 
 {
@@ -107,9 +108,9 @@ interface PlayerInterface
     /** 
     *   Cette méthode permet de récupérer une classe spécifique.
     *   @param {number} id                                                  ID de la classe
-    *   @return {object}
+    *   @return {Klass|undefined}
     **/
-    GetClass(id: number): object;
+    GetClass(id: number): Klass|undefined;
 
     /**
     *   Cettte méthode permet de récupérer les classes du jeu.

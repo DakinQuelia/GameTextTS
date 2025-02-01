@@ -41,7 +41,7 @@ class Dices {
     *
     *   @return {boolean}
     **/
-    Rolls(dices, data) {
+    Rolls(dices, data = { modifier: "", text: "" }) {
         let rolls = [];
         let dicesMatch = this.format.exec(dices);
         let array = [this.result]; //
