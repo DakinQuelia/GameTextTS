@@ -16,10 +16,11 @@
         "src/core/game.ts",
         "src/core/player.ts",
         "src/core/constants.ts",
-        "src/core/types/**/*",
         "src/lang/*"
     ],
     "exclude": [
-        "src/core/**/*",
+        "src/core/types/**/*",
+        "src/core/enums/**/*",
+        "src/core/interfaces/**/*"
     ]
 }

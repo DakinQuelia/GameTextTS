@@ -4,9 +4,7 @@
 *	Auteur 		: Dakin Quelia
 *	Version 	: 1.0.0. 
 *****************************************/
-import { Character } from "../types/character.ts";
-
-/// <reference no-default-lib="true"/>
+import type { Character } from "../types/character";
 
 declare var PlayerInterface: 
 {

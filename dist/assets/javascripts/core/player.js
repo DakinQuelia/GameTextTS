@@ -2,203 +2,162 @@
 *	Gestion du joueur
 *   -----------------
 *	Auteur 		: Dakin Quelia
-*	Version 	: 1.0.0. 
+*	Version 	: 1.0.0.
 *****************************************/
 import PlayerInterface from "./interfaces/playerinterface";
 import { FILES } from "./constants.js";
-import type { Character } from "./types/character";
-
-class Player implements PlayerInterface
-{
+class Player {
     //character: Character;
-
     /**
     *   Le constructeur
-    * 
+    *
     *   @return {void}
     **/
-    constructor()
-    {
-        
+    constructor() {
     }
-
     /**
     *   Cette méthode initialise la classe "joueur".
-    * 
+    *
     *   @return {void}
     **/
-    Init(): void
-    {
-        
+    Init() {
     }
-
     /**
-    *   Cette méthode permet de créer le joueur avec les statistiques et compétences.  
-    * 
+    *   Cette méthode permet de créer le joueur avec les statistiques et compétences.
+    *
     *   @param {Character} character                                        Les données du joueur.
-    * 
+    *
     *   @return {boolean}
     **/
-    CreatePlayer(character: Character): boolean 
-    {
+    CreatePlayer(character) {
         throw new Error("Method not implemented.");
     }
-    
     /**
     *   Cette fonction permet de récupérer les informations du joueur.
-    * 
+    *
     *   @return {boolean}
     **/
-    async GetPlayer(): Promise<any> 
-    {
+    async GetPlayer() {
         return await fetch(`${FILES['player']}`)
-                .then(response => response.json())
-                .then(data =>
-                { 
-                    return data ? data : "Joueur"; 
-                })
-                .catch((err) => { console.log('ERROR :: ' + err); });
+            .then(response => response.json())
+            .then(data => {
+            return data ? data : "Joueur";
+        })
+            .catch((err) => { console.log('ERROR :: ' + err); });
     }
-
     /**
     *   Cette méthode permet de vérifier que le joueur ne dépasse pas le quota des points.
-    * 
+    *
     *   @return {void}
     **/
-    CheckPoints(): void 
-    {
+    CheckPoints() {
         throw new Error("Method not implemented.");
     }
-
     /**
     *   Cette méthode permet de retourner le nom du joueur.
-    * 
+    *
     *   @return {string}
     **/
-    GetName(): string 
-    {
+    GetName() {
         throw new Error("Method not implemented.");
     }
-
     /**
     *   Cette méthode permet de récupérer le niveau du personnage.
-    * 
+    *
     *   @param {object} data                                                Données du joueur
-    * 
-    *   @return {number} 
-    **/
-    GetLevel(data: object): number
-    {
-        throw new Error("Method not implemented.");
-    }
-
-    /**
-    *   Cette méthode permet de récupérer le coût de l'attribut.
-    * 
-    *   @param {number} index                                               Index de la stat
-    * 
+    *
     *   @return {number}
     **/
-    GetAttributeCost(index: number): number 
-    {
+    GetLevel(data) {
         throw new Error("Method not implemented.");
     }
-    
+    /**
+    *   Cette méthode permet de récupérer le coût de l'attribut.
+    *
+    *   @param {number} index                                               Index de la stat
+    *
+    *   @return {number}
+    **/
+    GetAttributeCost(index) {
+        throw new Error("Method not implemented.");
+    }
     /**
     *   Cette méthode permet de récupérer le modificateur.
-    * 
+    *
     *   @param {object} modifier                                            Modificateur
-    * 
+    *
     *   @return {object}
     **/
-    GetModifier(modifier: object): object
-    {
+    GetModifier(modifier) {
         throw new Error("Method not implemented.");
     }
-
     /**
     *   Cette méthode permet de récupérer les modificateurs.
-    * 
+    *
     *   @return {any[]}
     **/
-    GetModifiers(): any[] 
-    {
+    GetModifiers() {
         throw new Error("Method not implemented.");
     }
-
     /**
     *   Cette méthode permet d'inclure les popovers d'aide.
-    * 
+    *
     *   @param {object} data                                                Données de l'aide
-    * 
-    *   @return {string} 
+    *
+    *   @return {string}
     **/
-    CreateHelp(data: object): string 
-    {
+    CreateHelp(data) {
         throw new Error("Method not implemented.");
     }
-
     /**
     *   Cette méthode permet d'afficher les aides.
-    * 
-    *   @return {void} 
-    **/
-    DisplayHelp(): void 
-    {
-        throw new Error("Method not implemented.");
-    }
-
-    /**
-    *   Cette méthode permet d'afficher le sélecteur des classes de personnage.
-    * 
-    *   @return {void} 
-    **/
-    DisplayClassSelector(): void 
-    {
-        throw new Error("Method not implemented.");
-    }
-
-    /**
-    *   Cette méthode permet d'afficher les erreurs.   
-    * 
+    *
     *   @return {void}
     **/
-    DisplayErrors(): void 
-    {
+    DisplayHelp() {
         throw new Error("Method not implemented.");
     }
-
+    /**
+    *   Cette méthode permet d'afficher le sélecteur des classes de personnage.
+    *
+    *   @return {void}
+    **/
+    DisplayClassSelector() {
+        throw new Error("Method not implemented.");
+    }
+    /**
+    *   Cette méthode permet d'afficher les erreurs.
+    *
+    *   @return {void}
+    **/
+    DisplayErrors() {
+        throw new Error("Method not implemented.");
+    }
     /**
     *   Cette méthode permet de récupérer les données des aides.
-    * 
-    *   @return {void} 
+    *
+    *   @return {void}
     **/
-    GetHelpData(): void 
-    {
+    GetHelpData() {
         throw new Error("Method not implemented.");
     }
-
-    /** 
+    /**
     *   Cette méthode permet de récupérer une classe spécifique.
-    * 
+    *
     *   @param {number} id                                                  ID de la classe
-    * 
+    *
     *   @return {object}
     **/
-    GetClass(id: number): object 
-    {
+    GetClass(id) {
         throw new Error("Method not implemented.");
     }
-
     /**
     *   Cettte méthode permet de récupérer les classes du jeu.
-    * 
-    *   @return {any[]} 
+    *
+    *   @return {any[]}
     **/
-    GetClasses(): any[] 
-    {
+    GetClasses() {
         throw new Error("Method not implemented.");
     }
 }
-
 export default new Player();
