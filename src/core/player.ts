@@ -5,6 +5,7 @@
 *	Version 	: 1.0.0. 
 *****************************************/
 import PlayerInterface from "./interfaces/playerinterface";
+import { FILES } from "./constants.js";
 import { Character } from "./types/character";
 
 class Player implements PlayerInterface
@@ -46,13 +47,17 @@ class Player implements PlayerInterface
     /**
     *   Cette fonction permet de récupérer les informations du joueur.
     * 
-    *   @param {Character} character                                        Les données du joueur.
-    * 
     *   @return {boolean}
     **/
-    GetPlayer(character: Character): boolean 
+    async GetPlayer(): Promise<any> 
     {
-        throw new Error("Method not implemented.");
+        return await fetch(`${FILES['player']}`)
+                .then(response => response.json())
+                .then(data =>
+                { 
+                    return data ? data : "Joueur"; 
+                })
+                .catch((err) => { console.log('ERROR :: ' + err); });
     }
 
     /**

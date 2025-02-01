@@ -31,9 +31,9 @@ interface PlayerInterface
     
     /**
     *   Cette fonction permet de récupérer les informations du joueur
-    *   @param character Les données du joueur.
+    *   @return {Promise<any>}
     **/
-    GetPlayer(character: Character): boolean;
+    GetPlayer(): Promise<any>;
     
     /**
     *   Cette méthode permet de vérifier que le joueur ne dépasse pas le quota des points.

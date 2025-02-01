@@ -33,7 +33,7 @@ export function GetLevel(data: object): number
     return Player.GetLevel(data);
 }
 
-export async function DisplayGameInfo()
+export async function DisplayGameInfo(): Promise<GameInfo>
 {
     return await Game.DisplayGameInfo();
 }
