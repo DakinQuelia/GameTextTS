@@ -5,10 +5,10 @@
 *	Version 	: 1.0.0. 
 *****************************************/
 import { FILES, ROOT, DATA_ROOT, RESOURCES_ROOT, DATABASE_ROOT, SCRIPTS_ROOT } from "./constants.js";
+import type { GameInfo } from "./types/gameinfo.js";
 import Config from "../config/global.js";
 import Modal from '../lib/modal.js';
 import Utils from '../lib/utils.js';
-import type { GameInfo } from "./types/gameinfo.js";
 
 class Game
 {
@@ -324,7 +324,7 @@ class Game
     async DisplayGameInfo<T extends GameInfo>(): Promise<T>
     {
         let request = new Request(`${DATA_ROOT}/settings.js`);
-        
+
         const game_settings = await fetch(request).catch((err) => { console.log('ERROR :: ' + err); });
 
         if (typeof game_settings === "undefined" || game_settings === null)

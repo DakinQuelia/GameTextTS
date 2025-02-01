@@ -47,7 +47,7 @@ class Dices
     * 
     *   @return {boolean}
     **/
-    Rolls(dices: string, data: { modifier: string, text: string }): boolean
+    Rolls(dices: string, data: { modifier: string, text: string } = { modifier: "", text: "" }): boolean
     {
         let rolls: number[] = [];
         let dicesMatch = this.format.exec(dices) as any;

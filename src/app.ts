@@ -6,6 +6,8 @@
 import { DEFAULT_LANGUAGE } from "./core/constants.js";
 import Game from "./core/game.js";
 import Modal from "./lib/modal.js";
+import Dices from "./lib/dices.js";
+
 //import settings from "./data/settings.js";
 
 //Modal.Init();
