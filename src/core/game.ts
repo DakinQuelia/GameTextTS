@@ -323,9 +323,9 @@ class Game
     **/
     async DisplayGameInfo<T extends GameInfo>(): Promise<T>
     {
-        let request = new Request(`${DATA_ROOT}/settings.js`);
+        let file = `${DATA_ROOT}/settings.json`;
 
-        const game_settings = await fetch(request).catch((err) => { console.log('ERROR :: ' + err); });
+        const game_settings = await fetch(file).catch((err) => { console.log('ERROR :: ' + err); });
 
         if (typeof game_settings === "undefined" || game_settings === null)
         {
@@ -337,7 +337,7 @@ class Game
         /* Titre de la page */
         document.title = `Jeu :: ${game_infos.title}`;
 
-        return new Promise<T>((resolve, reject) => 
+        return new Promise<T>(() => 
         {
             return {
                 title: game_infos['title'],
