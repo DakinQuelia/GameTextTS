@@ -16,9 +16,9 @@ interface PlayerInterface
 {
     /**
     *   Cette méthode initialise la classe "joueur".
-    *   @return {void}
+    *   @return {Promise<void>}
     **/
-    Init(): void;
+    Init(): Promise<void>;
     
     /**
     *   Cette méthode permet de créer le joueur avec les statistiques et compétences.  
@@ -113,9 +113,9 @@ interface PlayerInterface
 
     /**
     *   Cettte méthode permet de récupérer les classes du jeu.
-    *   @return {any[]} 
+    *   @return {Promise<any>} 
     **/
-    GetClasses(): any[];
+    GetClasses(): Promise<any>;
 }
 
 export default PlayerInterface;

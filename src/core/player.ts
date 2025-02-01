@@ -11,6 +11,7 @@ import * as Config from "../data/settings.json";
 
 class Player implements PlayerInterface
 {
+    /* Global */
     public points_stats_max: number;
     public points_skills_max: number;
     public stats_default_value: number;
@@ -30,6 +31,10 @@ class Player implements PlayerInterface
     public total: { stats: number, skills: number };
     public points: { stats: number, skills: number };
     public stats_modifier: string;
+    /* Eléments HTML */
+    public form: HTMLFormElement|null;
+    public character_name: HTMLElement|null;
+    public character_class: HTMLElement|null;
 
     /**
     *   Le constructeur
@@ -60,10 +65,11 @@ class Player implements PlayerInterface
         this.stats_modifier = "";
 
         /* Eléments HTML */
-        /*
         this.form = document.querySelector("#create_character") ? document.querySelector("#create_character") : null;
         this.character_name = document.querySelector("#character_name") ? document.querySelector("#character_name") : null;
         this.character_class = document.querySelector("#character_class") ? document.querySelector("#character_class") : null;
+
+        /*
         this.stats_number = document.querySelectorAll('#stats input[type="number"]') ? document.querySelectorAll('#stats input[type="number"]') : null;
         this.skills_number = document.querySelectorAll('#skills input[type="number"]') ? document.querySelectorAll('#skills input[type="number"]') : null;
         this.button_copy = document.querySelector("#gcopy") ? document.querySelector("#gcopy") : null;
@@ -81,19 +87,9 @@ class Player implements PlayerInterface
     }
 
     /**
-    *   Cette méthode initialise la classe "joueur".
-    * 
-    *   @return {void}
-    **/
-    Init(): void
-    {
-        
-    }
-
-    /**
     *   Cette méthode permet de créer le joueur avec les statistiques et compétences.  
     * 
-    *   @param {Character} character                                        Les données du joueur.
+    *   @param {Character} character                                            Les données du joueur.
     * 
     *   @return {boolean}
     **/
@@ -133,45 +129,111 @@ class Player implements PlayerInterface
     * 
     *   @return {string}
     **/
-    GetName(): string 
+    GetName(): string
     {
-        throw new Error("Method not implemented.");
+        return this.name ? this.name : "Inconnu";
     }
 
     /**
     *   Cette méthode permet de récupérer le niveau du personnage.
     * 
-    *   @param {object} data                                                Données du joueur
+    *   @param {object} data                                                    Données du joueur
     * 
     *   @return {number} 
     **/
     GetLevel(data: object): number
     {
-        throw new Error("Method not implemented.");
+        let player_level = 0;
+        let player_classes = data as any;
+
+        if (typeof player_classes === "undefined" || player_classes === null)
+        {
+            return player_level;
+        }
+        
+        Object.values(player_classes).forEach((key: any, index: number) =>
+        {
+            player_level += player_classes[index].level;
+
+            return player_level;
+        });
+
+        return player_level;
     }
 
     /**
     *   Cette méthode permet de récupérer le coût de l'attribut.
     * 
-    *   @param {number} index                                               Index de la stat
+    *   @param {number} index                                                   Index de la stat
     * 
     *   @return {number}
     **/
-    GetAttributeCost(index: number): number 
+    GetAttributeCost(index: number = 0): number 
     {
-        throw new Error("Method not implemented.");
+        let mod = 0;
+        let input = this.stats;
+    
+        switch(index)
+        {
+            case 0:
+                mod = Math.floor((input[0].value - 10)/2);
+            break;
+            case 1:
+                mod = Math.floor((input[1].value - 10)/2);
+            break;
+            case 2:
+                mod = Math.floor((input[2].value - 10)/2);
+            break;
+            case 3:
+                mod = Math.floor((input[3].value - 10)/2);
+            break;
+            case 4:
+                mod = Math.floor((input[4].value - 10)/2);
+            break;
+            case 5:
+                mod = Math.floor((input[5].value - 10)/2);
+            break;
+        }
+            
+        return Math.max(1, mod);
     }
     
     /**
     *   Cette méthode permet de récupérer le modificateur.
     * 
-    *   @param {object} modifier                                            Modificateur
+    *   @param {any} modifier                                                   Modificateur
     * 
-    *   @return {object}
+    *   @return {{ color: string }}
     **/
-    GetModifier(modifier: object): object
+    GetModifier(modifier: any): { color: string }
     {
-        throw new Error("Method not implemented.");
+        let color;
+
+        if (modifier === null || typeof modifier === "undefined")
+        {
+            return {
+                color: "#000000"
+            };
+        }
+
+        let modifier_c = modifier.slice(0).charAt(0);
+
+        if (modifier_c === "+")
+        {
+            color = "#008000";
+        }
+        else if(modifier_c === "-")
+        {
+            color = "#FF0000";
+        }
+        else
+        {
+            color = "#000000";
+        }
+
+        return {
+            color,
+        };
     }
 
     /**
@@ -181,13 +243,13 @@ class Player implements PlayerInterface
     **/
     GetModifiers(): any[] 
     {
-        throw new Error("Method not implemented.");
+        return this.modifiers;
     }
 
     /**
     *   Cette méthode permet d'inclure les popovers d'aide.
     * 
-    *   @param {object} data                                                Données de l'aide
+    *   @param {object} data                                                    Données de l'aide
     * 
     *   @return {string} 
     **/
@@ -226,34 +288,63 @@ class Player implements PlayerInterface
         throw new Error("Method not implemented.");
     }
 
-    /**
-    *   Cette méthode permet de récupérer les données des aides.
-    * 
-    *   @return {void} 
-    **/
-    GetHelpData(): void 
-    {
-        throw new Error("Method not implemented.");
-    }
-
     /** 
     *   Cette méthode permet de récupérer une classe spécifique.
     * 
-    *   @param {number} id                                                  ID de la classe
+    *   @param {number} id                                                      ID de la classe
     * 
     *   @return {object}
     **/
     GetClass(id: number): object 
     {
-        throw new Error("Method not implemented.");
+        let character_class = this.classes.filter(c => c.id === id)[0];
+
+        return character_class;
     }
 
     /**
     *   Cettte méthode permet de récupérer les classes du jeu.
     * 
-    *   @return {any[]} 
+    *   @return {Promise<any>} 
     **/
-    GetClasses(): any[] 
+    async GetClasses(): Promise<any>
+    {
+        return await fetch(FILES['classes'])
+            .then(response => response.json())
+            .then(data =>
+            { 
+                return data ? data : []; 
+            })
+            .catch((err) => { console.log('ERREUR :: ' + err); });
+    }
+
+    /**
+    *   Cette méthode permet de récupérer les données des aides.
+    * 
+    *   @return {void} 
+    **/
+    async GetHelpData(): Promise<void> 
+    {
+        let data = await fetch(FILES['help'])
+            .then(response => response.json())
+            .then(data =>
+            { 
+                return data ? data : []; 
+            })
+            .catch((err) => { 
+                console.log('ERREUR :: ' + err); 
+                throw new Error(`ERREUR :: ${err}`);
+            });
+       
+        this.helps.push(data);
+    }
+
+    /**
+    *   Cette méthode initialise la classe "joueur".
+    * 
+    *   @return {void}
+    **/
+    async Init(): Promise<void>
     {
         throw new Error("Method not implemented.");
     }
