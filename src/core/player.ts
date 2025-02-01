@@ -5,12 +5,31 @@
 *	Version 	: 1.0.0. 
 *****************************************/
 import PlayerInterface from "./interfaces/playerinterface";
-import { FILES } from "./constants.js";
 import type { Character } from "./types/character";
+import { FILES } from "./constants.js";
+import * as Config from "../data/settings.json";
 
 class Player implements PlayerInterface
 {
-    //character: Character;
+    public points_stats_max: number;
+    public points_skills_max: number;
+    public stats_default_value: number;
+    public point_diff: number;
+    public value: number;
+    public cost: number;
+    public diff: number;
+    public name: string;
+    public helps: any[];
+    public classes: any[];
+    public stats: any[];
+    public skills: any[];
+    public feats: any[];
+    public modifiers: any[];
+    public inventory: any[];
+    public errors: string[];
+    public total: { stats: number, skills: number };
+    public points: { stats: number, skills: number };
+    public stats_modifier: string;
 
     /**
     *   Le constructeur
@@ -19,7 +38,46 @@ class Player implements PlayerInterface
     **/
     constructor()
     {
-        
+        /* Global */
+        this.points_stats_max = Config.points.stats_max ? Config.points.stats_max : 30;                           // Maximum de points de stats
+        this.points_skills_max = Config.points.skills_max ? Config.points.skills_max : 20;                        // Maximum de points pour compétences
+        this.stats_default_value = Config.base_points ? Config.base_points : 0;                                   // Défaut : 0 | Kotor = 8 par défaut
+        this.point_diff = 0;
+        this.value = 0;
+        this.cost = 0;
+        this.diff = 0;
+        this.name = "";
+        this.helps = [];
+        this.classes = [];
+        this.stats = [];
+        this.skills = [];
+        this.feats = [];
+        this.modifiers = [];
+        this.inventory = [];
+        this.errors = [];
+        this.total = { stats: 0, skills: 0 };
+        this.points = { stats: 0, skills: 0 };
+        this.stats_modifier = "";
+
+        /* Eléments HTML */
+        /*
+        this.form = document.querySelector("#create_character") ? document.querySelector("#create_character") : null;
+        this.character_name = document.querySelector("#character_name") ? document.querySelector("#character_name") : null;
+        this.character_class = document.querySelector("#character_class") ? document.querySelector("#character_class") : null;
+        this.stats_number = document.querySelectorAll('#stats input[type="number"]') ? document.querySelectorAll('#stats input[type="number"]') : null;
+        this.skills_number = document.querySelectorAll('#skills input[type="number"]') ? document.querySelectorAll('#skills input[type="number"]') : null;
+        this.button_copy = document.querySelector("#gcopy") ? document.querySelector("#gcopy") : null;
+        this.button_play = document.querySelector("#play") ? document.querySelector("#play") : null;
+        this.button_cancel = document.querySelector("#cancel") ? document.querySelector("#cancel") : null;
+        this.header_stats_points = document.querySelector("#points_stats .points") ? document.querySelector("#points_stats .points") : null;
+        this.header_skills_points = document.querySelector("#points_skills .points") ? document.querySelector("#points_skills .points") : null;
+        this.stats_input_name = document.querySelectorAll("#stats .category-name") ? document.querySelectorAll("#stats .category-name") : null;
+        this.stats_container = document.querySelector("#stats") ? document.querySelector("#stats") : null;
+        this.stat_category = document.querySelectorAll("#stats .sub-category") ? document.querySelectorAll("#stats .sub-category") : null;
+        this.stat_category_name = document.querySelectorAll("#stats .category-name") ? document.querySelectorAll("#stats .category-name") : null;
+        this.skill_category = document.querySelectorAll("#skills .sub-category") ? document.querySelectorAll("#skills .sub-category") : null;
+        this.skill_category_name = document.querySelectorAll("#skills .category-name") ? document.querySelectorAll("#skills .category-name") : null;
+        */
     }
 
     /**

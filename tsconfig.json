@@ -6,7 +6,8 @@
         "strict": true,
         "moduleResolution": "node",
         "verbatimModuleSyntax": true,
-        "noUncheckedIndexedAccess": true
+        "noUncheckedIndexedAccess": true,
+        "resolveJsonModule": true
     },
     "files": [
         "src/app.ts"
