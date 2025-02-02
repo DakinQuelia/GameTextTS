@@ -243,10 +243,13 @@ class Player {
     *
     *   @param {number} id                                                      ID de la classe
     *
-    *   @return {any}
+    *   @return {Klass|undefined}
     **/
     GetClass(id) {
         let character_class = this.classes.filter(c => c.id === id)[0];
+        if (typeof character_class == "undefined") {
+            throw new Error(`La classe n'existe pas !`);
+        }
         return character_class;
     }
     /**

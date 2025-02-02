@@ -7,7 +7,8 @@
         "moduleResolution": "node",
         "verbatimModuleSyntax": true,
         "noUncheckedIndexedAccess": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "rootDirs": ["src/data", "dist/data"]
     },
     "files": [
         "src/app.ts"

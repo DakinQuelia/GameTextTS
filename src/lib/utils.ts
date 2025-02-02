@@ -318,7 +318,7 @@ class Utils
     {
         Object.keys(diff).forEach((key) => 
         {
-            const diffkey = diff[key];
+            const diffkey = diff[key as keyof Object];
 
             if (previousdiff[key] !== diffkey)
             {
