@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "npx tsc --watch",
+    "dev": "tsc -t es2022 -m es2022 --moduleResolution node src/app.ts --outDir dist/assets/javascripts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

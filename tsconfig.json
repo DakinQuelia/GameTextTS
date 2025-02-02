@@ -8,7 +8,7 @@
         "verbatimModuleSyntax": true,
         "noUncheckedIndexedAccess": true,
         "resolveJsonModule": true,
-        "rootDirs": ["src/data", "dist/data"]
+        "noEmit": true
     },
     "files": [
         "src/app.ts"
@@ -18,7 +18,8 @@
         "src/core/game.ts",
         "src/core/player.ts",
         "src/core/constants.ts",
-        "src/lang/*"
+        "src/lang/**/*",
+        "src/data/**/*"
     ],
     "exclude": [
         "src/core/types/**/*",
