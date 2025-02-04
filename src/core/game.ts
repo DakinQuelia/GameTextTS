@@ -269,6 +269,8 @@ class Game
             this.SaveGame();    
         }
 
+        console.log(await this.DisplayGameInfo());
+
         // On charge les règles de jeu
         this.LoadRules();
 
@@ -344,7 +346,7 @@ class Game
                 author: game_infos['author'],
                 version: game_infos['version'],
                 credits: game_infos['credits']
-            }
+            };
         });
     }
 

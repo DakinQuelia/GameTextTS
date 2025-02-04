@@ -4,20 +4,20 @@
         "target": "ES2022",
         "module": "ES2022",
         "strict": true,
-        "moduleResolution": "node",
+        "moduleResolution": "node10",
         "verbatimModuleSyntax": true,
         "noUncheckedIndexedAccess": true,
         "resolveJsonModule": true,
         "noEmit": true
     },
     "files": [
-        "src/app.ts"
-    ],
-    "include": [
+        "src/app.ts",
         "src/core/alias.ts",
         "src/core/game.ts",
         "src/core/player.ts",
         "src/core/constants.ts",
+    ],
+    "include": [
         "src/lang/**/*",
         "src/data/**/*"
     ],

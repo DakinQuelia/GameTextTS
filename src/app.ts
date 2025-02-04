@@ -13,6 +13,4 @@ await Game.Init();
 
 //await Game.DisplayGameInfo();
 
-console.log(await Game.DisplayGameInfo());
-
 console.log(`La langue par défaut est : ${DEFAULT_LANGUAGE}`);
